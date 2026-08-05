@@ -43,9 +43,7 @@ CREATE TABLE "sessions" (
 CREATE TABLE "verification_tokens" (
     "identifier" TEXT NOT NULL,
     "token" TEXT NOT NULL,
-    "expires" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "verification_tokens_pkey" PRIMARY KEY ("identifier", "token")
+    "expires" TIMESTAMP(3) NOT NULL
 );
 
 -- CreateTable
@@ -105,7 +103,7 @@ CREATE TABLE "task_tags" (
     "taskId" TEXT NOT NULL,
     "tagId" TEXT NOT NULL,
 
-    CONSTRAINT "task_tags_pkey" PRIMARY KEY ("taskId", "tagId")
+    CONSTRAINT "task_tags_pkey" PRIMARY KEY ("taskId","tagId")
 );
 
 -- CreateTable
@@ -218,6 +216,9 @@ CREATE UNIQUE INDEX "sessions_sessionToken_key" ON "sessions"("sessionToken");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "verification_tokens_token_key" ON "verification_tokens"("token");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "verification_tokens_identifier_token_key" ON "verification_tokens"("identifier", "token");
 
 -- CreateIndex
 CREATE INDEX "tasks_userId_date_idx" ON "tasks"("userId", "date");

@@ -7,7 +7,6 @@ import {
   eachDayOfInterval,
   format,
   isToday,
-  isSameDay,
 } from "date-fns";
 import { cn } from "@/lib/utils";
 import { HOURS } from "@/lib/constants";
@@ -54,38 +53,40 @@ export function WeekView({ currentDate, tasks, onDayClick, onTaskClick }: WeekVi
   return (
     <div className="flex flex-col h-full overflow-auto">
       <div className="flex border-b sticky top-0 bg-background z-10">
-        <div className="w-16 shrink-0 border-r" />
-        {days.map((day) => {
-          const today = isToday(day);
-          return (
-            <div
-              key={day.toISOString()}
-              className={cn(
-                "flex-1 py-2 text-center border-r last:border-r-0",
-                today && "bg-primary/5"
-              )}
-            >
-              <div className="text-xs text-muted-foreground">
-                {format(day, "EEE")}
-              </div>
+        <div className="w-10 sm:w-16 shrink-0 border-r" />
+        <div className="flex flex-1 min-w-0">
+          {days.map((day) => {
+            const today = isToday(day);
+            return (
               <div
+                key={day.toISOString()}
                 className={cn(
-                  "inline-flex items-center justify-center w-7 h-7 text-sm font-medium rounded-full",
-                  today && "bg-primary text-primary-foreground"
+                  "flex-1 min-w-[48px] py-2 text-center border-r last:border-r-0",
+                  today && "bg-primary/5"
                 )}
               >
-                {format(day, "d")}
+                <div className="text-[10px] sm:text-xs text-muted-foreground">
+                  {format(day, "EEE")}
+                </div>
+                <div
+                  className={cn(
+                    "inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 text-xs sm:text-sm font-medium rounded-full",
+                    today && "bg-primary text-primary-foreground"
+                  )}
+                >
+                  {format(day, "d")}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
       <div className="flex flex-1">
-        <div className="w-16 shrink-0 border-r">
+        <div className="w-10 sm:w-16 shrink-0 border-r">
           {HOURS.map((hour) => (
-            <div key={hour} className="h-16 border-b flex items-start justify-end pr-2 pt-0.5">
-              <span className="text-[10px] text-muted-foreground">{hour}</span>
+            <div key={hour} className="h-16 border-b flex items-start justify-end pr-1 sm:pr-2 pt-0.5">
+              <span className="text-[8px] sm:text-[10px] text-muted-foreground">{hour}</span>
             </div>
           ))}
         </div>
@@ -99,7 +100,7 @@ export function WeekView({ currentDate, tasks, onDayClick, onTaskClick }: WeekVi
             <div
               key={day.toISOString()}
               className={cn(
-                "flex-1 relative border-r last:border-r-0",
+                "flex-1 min-w-[48px] relative border-r last:border-r-0",
                 today && "bg-primary/5"
               )}
               onClick={() => onDayClick?.(day)}
@@ -130,7 +131,7 @@ export function WeekView({ currentDate, tasks, onDayClick, onTaskClick }: WeekVi
                       onTaskClick?.(task);
                     }}
                     className={cn(
-                      "absolute left-0.5 right-0.5 rounded px-1.5 py-0.5 text-[11px] leading-tight overflow-hidden cursor-pointer transition-opacity hover:opacity-90 z-10 border border-black/10",
+                      "absolute left-0.5 right-0.5 rounded px-1 py-0.5 text-[10px] sm:text-[11px] leading-tight overflow-hidden cursor-pointer transition-opacity hover:opacity-90 z-10 border border-black/10",
                       task.color ? "text-white" : "bg-primary/20 text-primary"
                     )}
                     style={{
@@ -141,7 +142,7 @@ export function WeekView({ currentDate, tasks, onDayClick, onTaskClick }: WeekVi
                   >
                     <div className="font-medium truncate">{task.title}</div>
                     {height > 28 && task.startTime && (
-                      <div className="opacity-80 text-[10px]">
+                      <div className="opacity-80 text-[9px] sm:text-[10px] hidden sm:block">
                         {task.startTime}
                         {task.endTime ? ` - ${task.endTime}` : ""}
                       </div>

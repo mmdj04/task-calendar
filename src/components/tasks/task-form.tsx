@@ -140,7 +140,7 @@ export function TaskForm({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[calc(100%-2rem)] sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{mode === "create" ? "Create Task" : "Edit Task"}</DialogTitle>
         </DialogHeader>
@@ -159,7 +159,7 @@ export function TaskForm({
               <Textarea placeholder="Add a description..." rows={3} {...form.register("description")} />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Date *</label>
                 <Input type="date" {...form.register("date")} />
@@ -191,7 +191,7 @@ export function TaskForm({
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Status</label>
                 <select

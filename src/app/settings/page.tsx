@@ -99,8 +99,8 @@ export default function SettingsPage() {
   return (
     <div className="flex flex-col h-full">
       <div className="border-b p-4 md:p-6">
-        <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
-        <p className="text-muted-foreground">Customize your app preferences</p>
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Settings</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">Customize your app preferences</p>
       </div>
 
       <div className="flex-1 overflow-auto p-4 md:p-6 space-y-6 max-w-2xl">
@@ -113,7 +113,7 @@ export default function SettingsPage() {
             <CardDescription>Choose your preferred theme</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               {themes.map((t) => (
                 <Button
                   key={t.value}
@@ -138,7 +138,7 @@ export default function SettingsPage() {
             <CardDescription>Configure calendar preferences</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Default View</Label>
                 <Select value={defaultView} onValueChange={(v) => setDefaultView(v as CalendarView)}>
@@ -179,7 +179,7 @@ export default function SettingsPage() {
             <CardDescription>Customize pomodoro durations (minutes)</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="pomodoro-work">Work</Label>
                 <Input
@@ -249,7 +249,7 @@ export default function SettingsPage() {
             <CardDescription>Export or import your task data</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               <Button
                 variant="outline"
                 onClick={handleExport}

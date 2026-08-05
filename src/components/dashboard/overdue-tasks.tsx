@@ -60,7 +60,7 @@ export function OverdueTasks({ tasks = [] }: OverdueTasksProps) {
                   </div>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <Badge variant="destructive" className="text-xs whitespace-nowrap">
+                  <Badge variant="destructive" className="text-[10px] sm:text-xs whitespace-nowrap">
                     {daysOverdue}d overdue
                   </Badge>
                 </div>

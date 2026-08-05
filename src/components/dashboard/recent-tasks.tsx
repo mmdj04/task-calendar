@@ -63,11 +63,11 @@ export function RecentTasks({ todayTasks = [], upcomingTasks = [] }: RecentTasks
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 shrink-0">
-                <Badge variant="secondary" className={cn("text-xs", priorityStyles[task.priority])}>
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <Badge variant="secondary" className={cn("text-[10px] sm:text-xs hidden sm:inline-flex", priorityStyles[task.priority])}>
                   {task.priority}
                 </Badge>
-                <Badge variant="secondary" className={cn("text-xs", statusStyles[task.status])}>
+                <Badge variant="secondary" className={cn("text-[10px] sm:text-xs", statusStyles[task.status])}>
                   {task.status}
                 </Badge>
               </div>

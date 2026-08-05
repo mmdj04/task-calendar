@@ -49,7 +49,7 @@ export function MonthView({ currentDate, tasks, onDayClick, onTaskClick }: Month
         {weekDays.map((day) => (
           <div
             key={day}
-            className="py-2 text-center text-xs font-medium text-muted-foreground"
+            className="py-1.5 sm:py-2 text-center text-[10px] sm:text-xs font-medium text-muted-foreground"
           >
             {day}
           </div>
@@ -69,7 +69,7 @@ export function MonthView({ currentDate, tasks, onDayClick, onTaskClick }: Month
               key={dateKey}
               onClick={() => onDayClick?.(day)}
               className={cn(
-                "relative flex flex-col items-start p-1.5 min-h-[80px] border-b border-r transition-colors hover:bg-accent/50 text-left",
+                "relative flex flex-col items-start p-1 sm:p-1.5 min-h-[60px] sm:min-h-[80px] border-b border-r transition-colors hover:bg-accent/50 text-left",
                 !inMonth && "text-muted-foreground/40 bg-muted/30",
                 selected && "bg-accent",
                 today && "font-semibold"
@@ -77,7 +77,7 @@ export function MonthView({ currentDate, tasks, onDayClick, onTaskClick }: Month
             >
               <span
                 className={cn(
-                  "inline-flex items-center justify-center w-6 h-6 text-xs rounded-full",
+                  "inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 text-[10px] sm:text-xs rounded-full",
                   today && "bg-primary text-primary-foreground",
                   !today && selected && "bg-accent-foreground/10"
                 )}
@@ -85,8 +85,8 @@ export function MonthView({ currentDate, tasks, onDayClick, onTaskClick }: Month
                 {format(day, "d")}
               </span>
 
-              <div className="flex flex-col gap-0.5 mt-0.5 w-full overflow-hidden">
-                {dayTasks.slice(0, 3).map((task) => (
+              <div className="flex flex-col gap-px mt-0.5 w-full overflow-hidden">
+                {dayTasks.slice(0, 2).map((task) => (
                   <button
                     key={task.id}
                     onClick={(e) => {
@@ -94,7 +94,7 @@ export function MonthView({ currentDate, tasks, onDayClick, onTaskClick }: Month
                       onTaskClick?.(task);
                     }}
                     className={cn(
-                      "flex items-center gap-1 px-1 py-0.5 rounded text-[10px] leading-tight truncate w-full text-left transition-opacity hover:opacity-80",
+                      "flex items-center gap-0.5 px-0.5 sm:px-1 py-px rounded text-[8px] sm:text-[10px] leading-tight truncate w-full text-left transition-opacity hover:opacity-80",
                       task.color
                         ? "text-white"
                         : "bg-primary/10 text-primary"
@@ -108,9 +108,9 @@ export function MonthView({ currentDate, tasks, onDayClick, onTaskClick }: Month
                     <span className="truncate">{task.title}</span>
                   </button>
                 ))}
-                {dayTasks.length > 3 && (
-                  <span className="text-[10px] text-muted-foreground px-1">
-                    +{dayTasks.length - 3} mais
+                {dayTasks.length > 2 && (
+                  <span className="text-[8px] sm:text-[10px] text-muted-foreground px-0.5 sm:px-1">
+                    +{dayTasks.length - 2} mais
                   </span>
                 )}
               </div>

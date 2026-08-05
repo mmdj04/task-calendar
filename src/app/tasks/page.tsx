@@ -66,14 +66,14 @@ export default function TasksPage() {
   return (
     <div className="flex flex-col h-full">
       <div className="border-b p-4 md:p-6">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-start sm:items-center justify-between gap-3 mb-4">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Tasks</h1>
-            <p className="text-muted-foreground">Manage and organize your tasks</p>
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Tasks</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Manage and organize your tasks</p>
           </div>
-          <Button onClick={() => setTaskFormOpen(true)}>
-            <Plus className="h-4 w-4 mr-2" />
-            Add Task
+          <Button onClick={() => setTaskFormOpen(true)} size="sm" className="shrink-0">
+            <Plus className="h-4 w-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Add </span>Task
           </Button>
         </div>
 

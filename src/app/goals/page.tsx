@@ -204,28 +204,28 @@ export default function GoalsPage() {
   return (
     <div className="flex flex-col h-full">
       <div className="border-b p-4 md:p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-start sm:items-center justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Goals</h1>
-            <p className="text-muted-foreground">Track your weekly and monthly goals</p>
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Goals</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Track your weekly and monthly goals</p>
           </div>
-          <Button onClick={() => { resetForm(); setDialogOpen(true); }}>
-            <Plus className="h-4 w-4 mr-2" />
-            Add Goal
+          <Button onClick={() => { resetForm(); setDialogOpen(true); }} size="sm" className="shrink-0">
+            <Plus className="h-4 w-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Add </span>Goal
           </Button>
         </div>
       </div>
 
       <div className="flex-1 overflow-auto p-4 md:p-6">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="mb-6">
-            <TabsTrigger value="weekly" className="gap-2">
-              <Target className="h-4 w-4" />
-              Weekly Goals
+          <TabsList className="mb-6 w-full sm:w-auto">
+            <TabsTrigger value="weekly" className="gap-1 sm:gap-2 text-xs sm:text-sm flex-1 sm:flex-none">
+              <Target className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Weekly
             </TabsTrigger>
-            <TabsTrigger value="monthly" className="gap-2">
-              <TrendingUp className="h-4 w-4" />
-              Monthly Goals
+            <TabsTrigger value="monthly" className="gap-1 sm:gap-2 text-xs sm:text-sm flex-1 sm:flex-none">
+              <TrendingUp className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Monthly
             </TabsTrigger>
           </TabsList>
 

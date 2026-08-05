@@ -39,9 +39,9 @@ export function CalendarHeader() {
   })();
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-b">
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-1">
+    <div className="flex flex-col gap-2 border-b px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex items-center gap-2 min-w-0 flex-1">
+        <div className="flex items-center gap-1 shrink-0">
           <button
             onClick={() => navigateDate("prev")}
             className="inline-flex items-center justify-center w-8 h-8 rounded-md hover:bg-accent transition-colors"
@@ -58,22 +58,22 @@ export function CalendarHeader() {
 
         <button
           onClick={() => navigateDate("today")}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border hover:bg-accent transition-colors"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border hover:bg-accent transition-colors shrink-0"
         >
           <CalendarDays className="w-3.5 h-3.5" />
           Hoje
         </button>
 
-        <h2 className="text-lg font-semibold capitalize">{periodLabel}</h2>
+        <h2 className="text-base sm:text-lg font-semibold capitalize truncate">{periodLabel}</h2>
       </div>
 
-      <div className="flex items-center gap-1 p-0.5 rounded-lg bg-muted">
+      <div className="flex items-center gap-1 p-0.5 rounded-lg bg-muted shrink-0 self-end sm:self-auto">
         {viewOptions.map(({ value, label, icon: Icon }) => (
           <button
             key={value}
             onClick={() => setView(value)}
             className={cn(
-              "inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
+              "inline-flex items-center gap-1.5 px-2 sm:px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
               view === value
                 ? "bg-background text-foreground shadow-sm"
                 : "text-muted-foreground hover:text-foreground"

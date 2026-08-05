@@ -38,14 +38,14 @@ export function DayView({ currentDate, tasks, onTaskClick }: DayViewProps) {
   return (
     <div className="flex flex-col h-full overflow-auto">
       <div className="flex border-b sticky top-0 bg-background z-10">
-        <div className="w-16 shrink-0 border-r" />
-        <div className="flex-1 py-3 px-4">
-          <div className="text-sm text-muted-foreground">
+        <div className="w-10 sm:w-16 shrink-0 border-r" />
+        <div className="flex-1 py-2 sm:py-3 px-3 sm:px-4">
+          <div className="text-xs sm:text-sm text-muted-foreground">
             {format(currentDate, "EEEE")}
           </div>
           <div
             className={cn(
-              "text-2xl font-bold",
+              "text-lg sm:text-2xl font-bold",
               today && "text-primary"
             )}
           >
@@ -55,10 +55,10 @@ export function DayView({ currentDate, tasks, onTaskClick }: DayViewProps) {
       </div>
 
       <div className="flex flex-1">
-        <div className="w-16 shrink-0 border-r">
+        <div className="w-10 sm:w-16 shrink-0 border-r">
           {HOURS.map((hour) => (
-            <div key={hour} className="h-16 border-b flex items-start justify-end pr-2 pt-0.5">
-              <span className="text-[10px] text-muted-foreground">{hour}</span>
+            <div key={hour} className="h-16 border-b flex items-start justify-end pr-1 sm:pr-2 pt-0.5">
+              <span className="text-[8px] sm:text-[10px] text-muted-foreground">{hour}</span>
             </div>
           ))}
         </div>

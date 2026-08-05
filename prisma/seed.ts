@@ -1,11 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
 function createPrismaClient() {
-  const isPostgres = process.env.DATABASE_URL?.startsWith("postgresql") ||
-                     process.env.DATABASE_URL?.startsWith("postgres");
+  const databaseUrl = process.env.DATABASE_URL;
 
-  if (isPostgres) {
-    return new PrismaClient();
+  if (databaseUrl?.startsWith("postgresql") || databaseUrl?.startsWith("postgres")) {
+    try {
+      const { PrismaPg } = require("@prisma/adapter-pg");
+      const adapter = new PrismaPg({ connectionString: databaseUrl });
+      return new PrismaClient({ adapter });
+    } catch {
+      return new PrismaClient();
+    }
   }
 
   try {

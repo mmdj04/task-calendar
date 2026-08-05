@@ -146,7 +146,8 @@ export function TaskList({
         )}
       </div>
 
-      <div className="rounded-md border">
+      {/* Desktop: Table */}
+      <div className="hidden md:block rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>
@@ -220,6 +221,65 @@ export function TaskList({
             )}
           </TableBody>
         </Table>
+      </div>
+
+      {/* Mobile: Cards */}
+      <div className="md:hidden space-y-3">
+        {paginatedTasks.length > 0 ? (
+          paginatedTasks.map((task) => (
+            <div
+              key={task.id}
+              className="rounded-lg border p-3 space-y-2"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0 flex-1">
+                  <Checkbox
+                    checked={selectedIds.has(task.id)}
+                    onCheckedChange={() => toggleSelect(task.id)}
+                    className="shrink-0"
+                  />
+                  <span className="font-medium text-sm truncate">{task.title}</span>
+                </div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <Button variant="ghost" className="h-8 w-8 p-0 shrink-0">
+                      <MoreHorizontal className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => onEdit?.(task)}>
+                      <Edit2 className="mr-2 h-4 w-4" /> Edit
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => onDuplicate?.(task)}>
+                      <Copy className="mr-2 h-4 w-4" /> Duplicate
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => onDelete?.(task)} className="text-destructive">
+                      <Trash2 className="mr-2 h-4 w-4" /> Delete
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <Badge variant="secondary" className={cn("text-[10px]", priorityStyles[task.priority])}>
+                  {task.priority}
+                </Badge>
+                <Badge variant="secondary" className={cn("text-[10px]", statusStyles[task.status])}>
+                  {task.status}
+                </Badge>
+                {task.category && (
+                  <span className="text-[10px] text-muted-foreground">{task.category}</span>
+                )}
+                <span className="text-[10px] text-muted-foreground ml-auto">
+                  {format(task.date, "MMM d, yyyy")}
+                </span>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="text-center py-12 text-muted-foreground">
+            No tasks found.
+          </div>
+        )}
       </div>
 
       <div className="flex items-center justify-between">

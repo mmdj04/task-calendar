@@ -124,14 +124,14 @@ export default function CategoriesPage() {
   return (
     <div className="flex flex-col h-full">
       <div className="border-b p-4 md:p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-start sm:items-center justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Categories</h1>
-            <p className="text-muted-foreground">Organize your tasks by category</p>
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Categories</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Organize your tasks by category</p>
           </div>
-          <Button onClick={() => handleOpenDialog()}>
-            <Plus className="h-4 w-4 mr-2" />
-            Add Category
+          <Button onClick={() => handleOpenDialog()} size="sm" className="shrink-0">
+            <Plus className="h-4 w-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Add </span>Category
           </Button>
         </div>
       </div>
