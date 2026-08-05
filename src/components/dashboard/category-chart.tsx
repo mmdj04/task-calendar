@@ -55,8 +55,8 @@ export function CategoryChart({ data }: CategoryChartProps) {
                   border: "1px solid hsl(var(--border))",
                   borderRadius: "8px",
                 }}
-                formatter={(value: number) => [
-                  `${value}h (${Math.round((value / total) * 100)}%)`,
+                formatter={(value) => [
+                  `${value}h (${Math.round(((value as number) / total) * 100)}%)`,
                   "Time",
                 ]}
               />
